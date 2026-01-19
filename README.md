@@ -543,7 +543,7 @@ In this measurement, the UDP payload size is set to 1400 bytes.
 
 ### Load measurement
 
-| # | UPF / Date | UpLink<br>Gbps | <br>Kpps | <br>CPU%[1] | DownLink<br>Gbps | <br>Kpps | <br>CPU%[1] |
+| # | UPF / Date | UpLink<br>Gbps | <br>Kpps | (VM-TG)<br>CPU%[1] | DownLink<br>Gbps | <br>Kpps | (VM-TG)<br>CPU%[1] |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | a-1 | Open5GS UPF v2.7.6 (TUN)<br>2026.01.17 | Tx:1.79<br>Rx:1.11 | Tx:150.05<br>Rx:95.96 | 1.82 | Tx:1.74<br>Rx:1.21 | Tx:150.13<br>Rx:101.75 | 1.4 |
 | a-2 | Open5GS UPF v2.7.6 (TAP)<br>2026.01.17 | Tx:1.79<br>Rx:1.13 | Tx:149.95<br>Rx:97.65 | 1.35 | Tx:1.73<br>Rx:1.2 | Tx:149.53<br>Rx:100.92 | 1.57 |
