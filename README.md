@@ -335,8 +335,6 @@ See [here](https://github.com/s5uishida/install_eupf#create-configuration-file) 
 - `eupf/config.yml`  
 There is no change.
 
-<a id="changes_up_e1"></a>
-
 #### e-1. Changes in configuration files of OAI-CN5G-UPF (AF_PACKET)
 
 <a id="changes_up_e2"></a>
@@ -349,6 +347,8 @@ log_level:
   general: warning
 ```
 - `openair-upf/config.yaml`
+
+<a id="changes_up_e2"></a>
 
 #### e-2. Changes in configuration files of OAI-CN5G-UPF (eBPF/XDP)
 
