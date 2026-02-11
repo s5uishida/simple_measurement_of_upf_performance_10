@@ -335,9 +335,9 @@ See [here](https://github.com/s5uishida/install_eupf#create-configuration-file) 
 - `eupf/config.yml`  
 There is no change.
 
-#### e-1. Changes in configuration files of OAI-CN5G-UPF (AF_PACKET)
+<a id="changes_up_e1"></a>
 
-<a id="changes_up_e2"></a>
+#### e-1. Changes in configuration files of OAI-CN5G-UPF (AF_PACKET)
 
 See [here](https://github.com/s5uishida/install_oai_upf#conf) for the original file.
 And change this `config.yaml` to apply [AF_PACKET mode](https://github.com/s5uishida/install_oai_upf#af_conf) and [Framed Routing](https://github.com/s5uishida/install_oai_upf#fr).
