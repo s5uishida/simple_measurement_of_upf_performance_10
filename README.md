@@ -340,7 +340,7 @@ There is no change.
 #### e-1. Changes in configuration files of OAI-CN5G-UPF (Simple Switch)
 
 See [here](https://github.com/s5uishida/install_oai_upf#conf) for the original file.
-And change this `config.yaml` to apply [Simple Switch mode](https://github.com/s5uishida/install_oai_upf#af_conf).
+And change this `config.yaml` to apply [Simple Switch mode](https://github.com/s5uishida/install_oai_upf#ss_conf).
 Additionally, to prevent performance degradation, change the log level as follows.
 ```yaml
 log_level:
