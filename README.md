@@ -26,7 +26,7 @@ And this is a very simple measurement, and according to [this comment](https://g
     - [b. Changes in configuration files of free5GC 5GC UPF](#changes_up_b)
     - [c. Changes in configuration files of UPG-VPP](#changes_up_c)
     - [d. Changes in configuration files of eUPF](#changes_up_d)
-    - [e-1. Changes in configuration files of OAI-CN5G-UPF (AF_PACKET)](#changes_up_e1)
+    - [e-1. Changes in configuration files of OAI-CN5G-UPF (Simple Switch)](#changes_up_e1)
     - [e-2. Changes in configuration files of OAI-CN5G-UPF (eBPF/XDP)](#changes_up_e2)
 - [Network settings of TRex and UPFs](#network_settings)
   - [Network settings of TRex](#network_settings_trex)
@@ -35,7 +35,7 @@ And this is a very simple measurement, and according to [this comment](https://g
   - [b. Network settings of free5GC 5GC UPF](#network_settings_up_b)
   - [c. Network settings of UPG-VPP](#network_settings_up_c)
   - [d. Network settings of eUPF](#network_settings_up_d)
-  - [e-1. Network settings of OAI-CN5G-UPF (AF_PACKET)](#network_settings_up_e1)
+  - [e-1. Network settings of OAI-CN5G-UPF (Simple Switch)](#network_settings_up_e1)
   - [e-2. Network settings of OAI-CN5G-UPF (eBPF/XDP)](#network_settings_up_e2)
 - [Build Simple PFCP Client, TRex and UPFs](#build)
 - [Run Simple PFCP Client, TRex and UPFs](#run)
@@ -45,7 +45,7 @@ And this is a very simple measurement, and according to [this comment](https://g
     - [b. Run free5GC 5GC UPF](#run_up_b)
     - [c. Run UPG-VPP](#run_up_c)
     - [d. Run eUPF](#run_up_d)
-    - [e-1. Run OAI-CN5G-UPF (AF_PACKET)](#run_up_e1)
+    - [e-1. Run OAI-CN5G-UPF (Simple Switch)](#run_up_e1)
     - [e-2. Run OAI-CN5G-UPF (eBPF/XDP)](#run_up_e2)
   - [Run Simple PFCP Client](#run_pfcp)
   - [Run TRex](#run_trex)
@@ -100,7 +100,7 @@ Each VMs are as follows.
 | b | free5GC UPF<br>(go-upf) v1.2.8<br>***kernel module*** | 2026.01.05 | `b798fe5ee6a984be492fa53958dd5f1305469f85` | Ubuntu 24.04 |
 | c | UPG-VPP v1.13.0<br>***DPDK/VPP*** | 2024.03.25 | `dfdf64000566d35955d7c180720ff66086bd3572` | Ubuntu 22.04 |
 | d | eUPF v0.7.1<br>***eBPF/XDP*** | 2025.06.16 | `a8d774a0533ad71ddd59899be26f4aee8a31b5d2` | Ubuntu 24.04 |
-| e | OAI-CN5G-UPF v2.2.0<br>***AF_PACKET, eBPF/XDP*** | 2025.12.13 | `e025cdfb3a9c18a228f2efe36bd06b9de998554c` | Ubuntu 24.04 |
+| e | OAI-CN5G-UPF v2.2.0<br>***eBPF/XDP*** | 2025.12.13 | `e025cdfb3a9c18a228f2efe36bd06b9de998554c` | Ubuntu 24.04 |
 
 The network interfaces of each VM except VM-DUT are as follows.
 | VM | Device | Model | Linux Bridge | IP address | Interface |
@@ -337,10 +337,10 @@ There is no change.
 
 <a id="changes_up_e1"></a>
 
-#### e-1. Changes in configuration files of OAI-CN5G-UPF (AF_PACKET)
+#### e-1. Changes in configuration files of OAI-CN5G-UPF (Simple Switch)
 
 See [here](https://github.com/s5uishida/install_oai_upf#conf) for the original file.
-And change this `config.yaml` to apply [AF_PACKET mode](https://github.com/s5uishida/install_oai_upf#af_conf).
+And change this `config.yaml` to apply [Simple Switch mode](https://github.com/s5uishida/install_oai_upf#af_conf).
 Additionally, to prevent performance degradation, change the log level as follows.
 ```yaml
 log_level:
@@ -451,7 +451,7 @@ Next, down the interface `ens18` of the VM-DUT to delete default GW.
 
 <a id="network_settings_up_e1"></a>
 
-### e-1. Network settings of OAI-CN5G-UPF (AF_PACKET)
+### e-1. Network settings of OAI-CN5G-UPF (Simple Switch)
 
 First, see [this](https://github.com/s5uishida/install_oai_upf#network_settings).
 Then, down the interface `ens18` of the VM-DUT to delete default GW.
@@ -535,7 +535,7 @@ See [this](https://github.com/s5uishida/install_eupf#run).
 
 <a id="run_up_e1"></a>
 
-#### e-1. Run OAI-CN5G-UPF (AF_PACKET)
+#### e-1. Run OAI-CN5G-UPF (Simple Switch)
 
 See [this](https://github.com/s5uishida/install_oai_upf#run).
 
@@ -582,7 +582,7 @@ In this measurement, the UDP payload size is set to 1400 bytes.
 | b | free5GC UPF v1.2.8<br>2026.01.05 | Tx:5.92<br>Rx:4.81 | Tx:496.44<br>Rx:416.04 | 6.51 | Tx:5.77<br>Rx:3.92 | Tx:498.45<br>Rx:330.15 | 6.04 |
 | c | UPG-VPP v1.13.0<br>2024.03.25 | Tx:10.49<br>Rx:7.77 | Tx:880.07<br>Rx:671.52 | 11.15 | Tx:10.07<br>Rx:7.73 | Tx:870.89<br>Rx:651.87 | 11.37 |
 | d | eUPF v0.7.1 (native mode)<br>2025.06.16 | Tx:11.48<br>Rx:9.58 | Tx:963.22<br>Rx:828.42 | 67.53 | Tx:11.08<br>Rx:9.72 | Tx:957.63<br>Rx:815.05 | 65.42 |
-| e-1 | OAI-CN5G-UPF v2.2.0<br>(AF_PACKET)<br>2025.12.13 | Tx:2.38<br>Rx:1.33 | Tx:200.03<br>Rx:114.85 | 2.52 | Tx:2.31<br>Rx:1.99 | Tx:199.61<br>Rx:166.65 | 2.41 |
+| e-1 | OAI-CN5G-UPF v2.2.0<br>(Simple Switch)<br>2025.12.13 | Tx:2.38<br>Rx:1.33 | Tx:200.03<br>Rx:114.85 | 2.52 | Tx:2.31<br>Rx:1.99 | Tx:199.61<br>Rx:166.65 | 2.41 |
 | e-2 | OAI-CN5G-UPF v2.2.0<br>(eBPF/XDP)<br>2025.12.13 | Tx:11.39<br>Rx:9.58 | Tx:955.15<br>Rx:827.88 | 66.71 | Tx:11.25<br>Rx:9.82 | Tx:972.35<br>Rx:823.87 | 65.25 |
 
 1. CPU load - per core of TRex VM (VM-TG). In this case only one core is used.
@@ -1127,7 +1127,7 @@ tui>
 
 </details>
 
-<details><summary>e-1. logs for OAI-CN5G-UPF v2.2.0 (AF_PACKET)</summary>
+<details><summary>e-1. logs for OAI-CN5G-UPF v2.2.0 (Simple Switch)</summary>
 
 **UpLink measurement**
 ```
@@ -1354,7 +1354,7 @@ tui>
 | b | free5GC UPF v1.2.8<br>2026.01.05 | 0.211 | 0.220 | 0.195 | 0.222 | 0.234 | 0.201 |
 | c | UPG-VPP v1.13.0<br>2024.03.25 | 0.152 | 0.185 | 0.091 | 0.153 | 0.177 | 0.141 |
 | d | eUPF v0.7.1 (native mode)<br>22025.06.16 | 0.227 | 0.241 | 0.193 | 0.211 | 0.246 | 0.194 |
-| e-1 | OAI-CN5G-UPF v2.2.0<br>(AF_PACKET)<br>2025.12.13 | 0.290 | 0.296 | 0.272 | 0.290 | 0.301 | 0.262 |
+| e-1 | OAI-CN5G-UPF v2.2.0<br>(Simple Switch)<br>2025.12.13 | 0.290 | 0.296 | 0.272 | 0.290 | 0.301 | 0.262 |
 | e-2 | OAI-CN5G-UPF v2.2.0<br>(eBPF/XDP)<br>2025.12.13 | 0.207 | 0.217 | 0.190 | 0.200 | 0.205 | 0.190 |
 
 <details><summary>a-1. logs for Open5GS UPF v2.7.6 (TUN)</summary>
@@ -1747,7 +1747,7 @@ trex>
 
 </details>
 
-<details><summary>e-1. logs for OAI-CN5G-UPF v2.2.0 (AF_PACKET)</summary>
+<details><summary>e-1. logs for OAI-CN5G-UPF v2.2.0 (Simple Switch)</summary>
 
 **UpLink measurement**
 ```
@@ -2012,8 +2012,8 @@ I would like to thank all the excellent developers and contributors who develope
 
 ## Changelog (summary)
 
-- [2026.02.13] Measured OAI-CN5G-UPF(AF_PACKET) again.
-- [2026.02.11] Added measurement of OAI-CN5G-UPF(AF_PACKET).
+- [2026.02.13] Measured OAI-CN5G-UPF(Simple Switch) again.
+- [2026.02.11] Added measurement of OAI-CN5G-UPF(Simple Switch).
 - [2026.01.23] Measured again using OAI-CN5G-UPF(eBPF/XDP) built on Ubuntu 24.04.
 - [2026.01.18] Initial release. This measurement is an update of the following measurement, adding the measurement of OAI-CN5G-UPF(eBPF/XDP).  
   [Simple Measurement of UPF Performance 9](https://github.com/s5uishida/simple_measurement_of_upf_performance_9)
