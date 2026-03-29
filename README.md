@@ -341,11 +341,8 @@ There is no change.
 
 See [here](https://github.com/s5uishida/install_oai_upf#conf) for the original file.
 And change this `config.yaml` to apply [Simple Switch mode](https://github.com/s5uishida/install_oai_upf#ss_conf).
-Additionally, to prevent performance degradation, change the log level as follows.
-```yaml
-log_level:
-  general: warning
-```
+Additionally, to prevent performance degradation, change the log level like [this](https://github.com/s5uishida/install_oai_upf#performance).
+
 - `openair-upf/config.yaml`
 
 <a id="changes_up_e2"></a>
