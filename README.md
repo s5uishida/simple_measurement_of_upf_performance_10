@@ -577,7 +577,7 @@ In this measurement, the UDP payload size is set to 1400 bytes.
 | a-1 | Open5GS UPF v2.8.0 (TUN)<br>2026.08.07 | Tx:1.79<br>Rx:1.27 | Tx:149.98<br>Rx:109.46 | 2.14 | Tx:1.73<br>Rx:1.29 | Tx:149.9<br>Rx:108.47 | 1.5 |
 | a-2 | Open5GS UPF v2.8.0 (TAP)<br>2026.08.07 | Tx:1.78<br>Rx:1.37 | Tx:149.69<br>Rx:118.21 | 2.16 | Tx:1.72<br>Rx:1.38 | Tx:148.92<br>Rx:116.81 | 2.57 |
 | b | free5GC UPF v1.3.0<br>2026.09.05 | Tx:5.91<br>Rx:4.93 | Tx:495.85<br>Rx:426.42 | 5.85 | Tx:5.71<br>Rx:4.34 | Tx:493.76<br>Rx:365.23 | 5.88 |
-| c | UPG-VPP v1.13.0<br>2024.03.25 | Tx:10.35<br>Rx:8.2 | Tx:868.58<br>Rx:708.5 | 11.05 | Tx:10.04<br>Rx:8.19 | Tx:867.78<br>Rx:690.39 | 12.78 |
+| c | UPG-VPP v1.13.0<br>2024.03.25 | Tx:10.51<br>Rx:8.51 | Tx:881.95<br>Rx:735.49 | 72.12 | Tx:10.62<br>Rx:9.04 | Tx:918.04<br>Rx:762.34 | 74.15 |
 | d | eUPF v0.7.1 (native mode)<br>2026.10.05 | Tx:11.04<br>Rx:9.12 | Tx:926.08<br>Rx:788.27 | 77.73 | Tx:10.21<br>Rx:9.38 | Tx:887.21<br>Rx:786.85 | 66.91 |
 | e-1 | OAI-CN5G-UPF v2.2.1<br>(Simple Switch)<br>2026.10.07 | Tx:3.56<br>Rx:2.21 | Tx:298.78<br>Rx:190.8 | 4.46 | Tx:4.6<br>Rx:3.55 | Tx:397.44<br>Rx:297.76 | 4.68 |
 | e-2 | OAI-CN5G-UPF v2.2.1<br>(eBPF/XDP)<br>2026.10.07 | Tx:11.09<br>Rx:9.13 | Tx:930.37<br>Rx:789.35 | 72.77 | Tx:10.67<br>Rx:9.24 | Tx:922.2<br>Rx:775.18 | 65.72 |
@@ -912,17 +912,17 @@ tui>
 
 **UpLink measurement**
 ```
-start -f stl/gtp_1pkt_simple.py -p 0 -m 900kpps -d 60
+start -f stl/gtp_1pkt_simple.py -p 0 -m 1000kpps -d 60
 ```
 ```
 Global Statistics
 
-connection   : localhost, Port 4501                       total_tx_L2  : 10.35 Gbps                     
-version      : STL @ v3.08                                total_tx_L1  : 10.49 Gbps                     
-cpu_util.    : 11.05% @ 1 cores (1 per dual port)         total_rx     : 8.2 Gbps                       
-rx_cpu_util. : 1.37% / 708.5 Kpps                         total_pps    : 868.58 Kpps                    
-async_util.  : 0% / 16.73 bps                             drop_rate    : 2.16 Gbps                      
-total_cps.   : 0 cps                                      queue_full   : 38,477,232 pkts                
+connection   : localhost, Port 4501                       total_tx_L2  : 10.51 Gbps                     
+version      : STL @ v3.08                                total_tx_L1  : 10.65 Gbps                     
+cpu_util.    : 72.12% @ 1 cores (1 per dual port)         total_rx     : 8.51 Gbps                      
+rx_cpu_util. : 1.49% / 735.49 Kpps                        total_pps    : 881.95 Kpps                    
+async_util.  : 0% / 17.19 bps                             drop_rate    : 2 Gbps                         
+total_cps.   : 0 cps                                      queue_full   : 5,442,758 pkts                 
 
 Port Statistics
 
@@ -932,24 +932,24 @@ owner      |              root |              root |
 link       |                UP |                UP |                   
 state      |      TRANSMITTING |              IDLE |                   
 speed      |          200 Gb/s |          200 Gb/s |                   
-CPU util.  |            11.05% |              0.0% |                   
+CPU util.  |            72.12% |              0.0% |                   
 --         |                   |                   |                   
-Tx bps L2  |        10.35 Gbps |             0 bps |        10.35 Gbps 
-Tx bps L1  |        10.49 Gbps |             0 bps |        10.49 Gbps 
-Tx pps     |       868.58 Kpps |             0 pps |       868.58 Kpps 
-Line Util. |            5.25 % |               0 % |                   
+Tx bps L2  |        10.51 Gbps |             0 bps |        10.51 Gbps 
+Tx bps L1  |        10.65 Gbps |             0 bps |        10.65 Gbps 
+Tx pps     |       881.95 Kpps |             0 pps |       881.95 Kpps 
+Line Util. |            5.33 % |               0 % |                   
 ---        |                   |                   |                   
-Rx bps     |             0 bps |          8.2 Gbps |          8.2 Gbps 
-Rx pps     |             0 pps |        708.5 Kpps |        708.5 Kpps 
+Rx bps     |             0 bps |         8.51 Gbps |         8.51 Gbps 
+Rx pps     |             0 pps |       735.49 Kpps |       735.49 Kpps 
 ----       |                   |                   |                   
-opackets   |         114801912 |          27000023 |         141801935 
-ipackets   |          19027522 |          75457064 |          94484586 
-obytes     |      171054848880 |       39042033258 |      210096882138 
-ibytes     |       28198787604 |      109110914544 |      137309702148 
-tx-pkts    |       114.8 Mpkts |          27 Mpkts |       141.8 Mpkts 
-rx-pkts    |       19.03 Mpkts |       75.46 Mpkts |       94.48 Mpkts 
-tx-bytes   |         171.05 GB |          39.04 GB |          210.1 GB 
-rx-bytes   |           28.2 GB |         109.11 GB |         137.31 GB 
+opackets   |           6714407 |                 0 |           6714407 
+ipackets   |                 0 |           5288485 |           5288485 
+obytes     |       10004466430 |                 0 |       10004466430 
+ibytes     |                 0 |        7647149310 |        7647149310 
+tx-pkts    |        6.71 Mpkts |            0 pkts |        6.71 Mpkts 
+rx-pkts    |            0 pkts |        5.29 Mpkts |        5.29 Mpkts 
+tx-bytes   |             10 GB |               0 B |             10 GB 
+rx-bytes   |               0 B |           7.65 GB |           7.65 GB 
 -----      |                   |                   |                   
 oerrors    |                 0 |                 0 |                 0 
 ierrors    |                 0 |                 0 |                 0 
@@ -964,17 +964,17 @@ tui>
 
 **DownLink measurement**
 ```
-start -f stl/udp_1pkt_simple.py -p 1 -m 900kpps -d 60
+start -f stl/udp_1pkt_simple.py -p 1 -m 1000kpps -d 60
 ```
 ```
 Global Statistics
 
-connection   : localhost, Port 4501                       total_tx_L2  : 10.04 Gbps                     
-version      : STL @ v3.08                                total_tx_L1  : 10.18 Gbps                     
-cpu_util.    : 12.78% @ 1 cores (1 per dual port)         total_rx     : 8.19 Gbps                      
-rx_cpu_util. : 1.29% / 690.39 Kpps                        total_pps    : 867.78 Kpps                    
-async_util.  : 0% / 23.84 bps                             drop_rate    : 1.85 Gbps                      
-total_cps.   : 0 cps                                      queue_full   : 15,576,307 pkts                
+connection   : localhost, Port 4501                       total_tx_L2  : 10.62 Gbps                     
+version      : STL @ v3.08                                total_tx_L1  : 10.77 Gbps                     
+cpu_util.    : 74.15% @ 1 cores (1 per dual port)         total_rx     : 9.04 Gbps                      
+rx_cpu_util. : 1.54% / 762.37 Kpps                        total_pps    : 918.04 Kpps                    
+async_util.  : 0% / 9.35 bps                              drop_rate    : 1.58 Gbps                      
+total_cps.   : 0 cps                                      queue_full   : 10,564,007 pkts                
 
 Port Statistics
 
@@ -984,29 +984,29 @@ owner      |              root |              root |
 link       |                UP |                UP |                   
 state      |              IDLE |      TRANSMITTING |                   
 speed      |          200 Gb/s |          200 Gb/s |                   
-CPU util.  |              0.0% |            12.78% |                   
+CPU util.  |              0.0% |            74.15% |                   
 --         |                   |                   |                   
-Tx bps L2  |         11.14 bps |        10.04 Gbps |        10.04 Gbps 
-Tx bps L1  |         11.29 bps |        10.18 Gbps |        10.18 Gbps 
-Tx pps     |             0 pps |       867.78 Kpps |       867.78 Kpps 
-Line Util. |               0 % |            5.09 % |                   
+Tx bps L2  |             0 bps |        10.62 Gbps |        10.62 Gbps 
+Tx bps L1  |             0 bps |        10.77 Gbps |        10.77 Gbps 
+Tx pps     |             0 pps |       918.04 Kpps |       918.04 Kpps 
+Line Util. |               0 % |            5.38 % |                   
 ---        |                   |                   |                   
-Rx bps     |         8.19 Gbps |          7.48 bps |         8.19 Gbps 
-Rx pps     |       690.39 Kpps |             0 pps |       690.39 Kpps 
+Rx bps     |         9.04 Gbps |             0 bps |         9.04 Gbps 
+Rx pps     |       762.34 Kpps |             0 pps |       762.34 Kpps 
 ----       |                   |                   |                   
-opackets   |          54000001 |           6779399 |          60779400 
-ipackets   |           4980236 |          35162083 |          40142319 
-obytes     |       80460001490 |        9803010954 |       90263012444 
-ibytes     |        7380709752 |       50844372018 |       58225081770 
-tx-pkts    |          54 Mpkts |        6.78 Mpkts |       60.78 Mpkts 
-rx-pkts    |        4.98 Mpkts |       35.16 Mpkts |       40.14 Mpkts 
-tx-bytes   |          80.46 GB |            9.8 GB |          90.26 GB 
-rx-bytes   |           7.38 GB |          50.84 GB |          58.23 GB 
+opackets   |                 0 |          14427208 |          14427208 
+ipackets   |          11549513 |                 0 |          11549513 
+obytes     |                 0 |       20861742768 |       20861742768 
+ibytes     |       17116378266 |                 0 |       17116378266 
+tx-pkts    |            0 pkts |       14.43 Mpkts |       14.43 Mpkts 
+rx-pkts    |       11.55 Mpkts |            0 pkts |       11.55 Mpkts 
+tx-bytes   |               0 B |          20.86 GB |          20.86 GB 
+rx-bytes   |          17.12 GB |               0 B |          17.12 GB 
 -----      |                   |                   |                   
 oerrors    |                 0 |                 0 |                 0 
 ierrors    |                 0 |                 0 |                 0 
 
-status:  /
+status:  |
 
 Press 'ESC' for navigation panel...
 status: 
@@ -1349,7 +1349,7 @@ tui>
 | a-1 | Open5GS UPF v2.8.0 (TUN)<br>2026.08.07 | 0.288 | 0.315 | 0.281 | 0.298 | 0.372 | 0.273 |
 | a-2 | Open5GS UPF v2.8.0 (TAP)<br>2026.08.07 | 0.241 | 0.262 | 0.228 | 0.261 | 0.288 | 0.251 |
 | b | free5GC UPF v1.3.0<br>2026.09.05 | 0.213 | 0.230 | 0.196 | 0.208 | 0.229 | 0.193 |
-| c | UPG-VPP v1.13.0<br>2024.03.25 | 0.155 | 0.181 | 0.134 | 0.144 | 0.178 | 0.134 |
+| c | UPG-VPP v1.13.0<br>2024.03.25 | 0.159 | 0.168 | 0.151 | 0.152 | 0.171 | 0.137 |
 | d | eUPF v0.7.1 (native mode)<br>2026.10.05 | 0.208 | 0.217 | 0.205 | 0.212 | 0.242 | 0.179 |
 | e-1 | OAI-CN5G-UPF v2.2.1<br>(Simple Switch)<br>2026.10.07 | 0.260 | 0.288 | 0.218 | 0.249 | 0.262 | 0.239 |
 | e-2 | OAI-CN5G-UPF v2.2.1<br>(eBPF/XDP)<br>2026.10.07 | 0.201 | 0.209 | 0.175 | 0.190 | 0.210 | 0.179 |
@@ -1601,26 +1601,26 @@ Latency Statistics
 -------------+---------------
 TX pkts      |             11 
 RX pkts      |             11 
-Max latency  |            181 
-Min latency  |            134 
-Avg latency  |            155 
+Max latency  |            168 
+Min latency  |            151 
+Avg latency  |            159 
 -- Window -- |                
-Last max     |            143 
-Last-1       |              0 
-Last-2       |              0 
-Last-3       |              0 
-Last-4       |              0 
-Last-5       |              0 
-Last-6       |              0 
-Last-7       |              0 
-Last-8       |              0 
-Last-9       |              0 
-Last-10      |              0 
-Last-11      |              0 
-Last-12      |              0 
-Last-13      |              0 
+Last max     |            153 
+Last-1       |                
+Last-2       |                
+Last-3       |                
+Last-4       |                
+Last-5       |                
+Last-6       |                
+Last-7       |                
+Last-8       |                
+Last-9       |                
+Last-10      |                
+Last-11      |                
+Last-12      |                
+Last-13      |                
 ---          |                
-Jitter       |             14 
+Jitter       |             11 
 ----         |                
 Errors       |              0 
 
@@ -1638,26 +1638,26 @@ Latency Statistics
 -------------+---------------
 TX pkts      |             11 
 RX pkts      |             11 
-Max latency  |            178 
-Min latency  |            134 
-Avg latency  |            144 
+Max latency  |            171 
+Min latency  |            137 
+Avg latency  |            152 
 -- Window -- |                
-Last max     |            134 
-Last-1       |              0 
-Last-2       |              0 
-Last-3       |              0 
-Last-4       |              0 
-Last-5       |              0 
-Last-6       |              0 
-Last-7       |              0 
-Last-8       |              0 
-Last-9       |              0 
-Last-10      |              0 
-Last-11      |              0 
-Last-12      |              0 
-Last-13      |              0 
+Last max     |            153 
+Last-1       |                
+Last-2       |                
+Last-3       |                
+Last-4       |                
+Last-5       |                
+Last-6       |                
+Last-7       |                
+Last-8       |                
+Last-9       |                
+Last-10      |                
+Last-11      |                
+Last-12      |                
+Last-13      |                
 ---          |                
-Jitter       |             20 
+Jitter       |             12 
 ----         |                
 Errors       |              0 
 
@@ -2009,7 +2009,7 @@ I would like to thank all the excellent developers and contributors who develope
 
 ## Changelog (summary)
 
-- [2026.10.10] Measured free5GC, eUPF and OAI-CN5G-UPF again.
+- [2026.10.10] Measured free5GC, UPG-VPP, eUPF and OAI-CN5G-UPF again.
 - [2026.08.11] Measured OAI-CN5G-UPF again.
 - [2026.08.08] Following [Open5GS UPF commit - upf: Attempt multiple reads on userplane socket per poll callback](https://github.com/open5gs/open5gs/commit/06db7255959405f0ce50cb1a664c4f5d62838a80), measured again to investigate changes in performance. As a result, some improvements were observed.
 - [2026.03.01] Measured again using UPG-VPP built on Ubuntu 24.04.
